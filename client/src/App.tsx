@@ -29,7 +29,7 @@ function App() {
     case "/ects":
         return <EctsCalculator/>
   }
-  return <div><NavBar /></div>;
+  return <NavBar/>;
 }
 
 export default App;
