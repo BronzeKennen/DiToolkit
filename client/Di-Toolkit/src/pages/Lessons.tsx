@@ -7,6 +7,7 @@ export default function Lessons() {
         return (
             <div>
               {backendData.users.map((user:any, i:any) => (
+                <p key={i}>{user} cringe cringegit</p>
               ))}
             </div>
         );
