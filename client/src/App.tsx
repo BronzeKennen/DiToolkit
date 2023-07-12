@@ -12,7 +12,7 @@ function App() {
   [backendData, setBackendData] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api").then(
+    fetch("http://localhost:5000/api/lessons").then(
       response => response.json()
     ).then(
       data => {
