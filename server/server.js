@@ -20,4 +20,4 @@ app.get("/api/lessons", async(req,res) => {
 })
 
 
-app.listen(5000, () => {console.log("Sever is up on port 5000")});
+app.listen(5000, () => {console.log("Server is up on port 5000")});
