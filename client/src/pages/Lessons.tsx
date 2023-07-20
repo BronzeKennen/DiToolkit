@@ -1,8 +1,10 @@
 import { backendData } from "../App"
 import React, { useState } from 'react'
+import { useAutoAnimate } from '@formkit/auto-animate/react'
 
 export default function Lessons() {
     const [dropdownStates, setDropdownStates] = useState({});
+    const [animations] = useAutoAnimate<HTMLDivElement>();
     if(typeof backendData === 'undefined') {
         return (<p>Loading...</p>)
     } else {
@@ -17,19 +19,20 @@ export default function Lessons() {
 
         return (
             <div>
-                
               {semesters.map((semester:any) => {
                 const semesterLessons = backendData.filter(
                     (lesson:any) => lesson.semester === semester
                 );
-
                 return(
-                   <div key={semester} id="buttonDiv">
+                   <div key={semester} id="buttonDiv" ref={animations}>
                         <button id="dropButton" type="button" onClick={() => toggleDropdown(semester)}>{semester}</button>
                     {dropdownStates[semester] && (
                         <div className="dropdownSemester">
                             {semesterLessons.map((lesson:any) => (
-                                <p key={lesson.lesson_name}>{lesson.lesson_name}</p>
+                                <div>
+                                <p className="courses" key={lesson.lesson_name}>{lesson.lesson_name}<span id="cid">{lesson.cid}</span></p>
+                                
+                                </div>
                             ))}
                         </div>
                     )}
