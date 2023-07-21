@@ -4,8 +4,17 @@ import Lessons from './pages/Lessons';
 import './App.css'
 import { useEffect, useState } from 'react'
 import { createClient } from '@supabase/supabase-js'
+import { 
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  Link,
+  Outlet,
+  RouterProvider
+} from 'react-router-dom' 
 
-export var backendData:any, setBackendData:any;
+
+export let backendData:any|null;
 
 export const supabase = createClient(
   import.meta.env.VITE_SUPABASE_URL,
@@ -13,27 +22,42 @@ export const supabase = createClient(
   import.meta.env.VITE_SUPABASE_PASSWORD
 );
 
-
 const { data: lessons, error } = await supabase
-  .from('lessons')
-  .select('*')
+      .from('lessons')
+      .select('*')
 
   
 function App() {
-  [backendData, setBackendData] = useState([]);
 
-  useEffect(() => {
-    setBackendData(lessons);
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/" element={<Root/>}>
+
+        <Route path="/courses" element={<Lessons/>}/>
+        <Route path="/ects" element={<EctsCalculator/>}/>
+
+      </Route>
+    )
+  )
+
+
+  useEffect(() => { 
+    backendData = lessons;
   })
-  switch(window.location.pathname) {
-    case "/":
-        break;
-    case "/lessons":
-        return <Lessons/>
-    case "/ects":
-        return <EctsCalculator/>
-  }
-  return <NavBar/>;
+  return (
+    <div>
+    <RouterProvider router={router}/>
+    </div>);
+}
+
+const Root = () => {
+  return (
+      <>
+        <NavBar/>
+        <div>
+          <Outlet/>
+        </div>
+      </>)
 }
 
 export default App;
