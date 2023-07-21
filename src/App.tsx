@@ -1,3 +1,4 @@
+import Home from './pages/Home';
 import NavBar from './Navbar';
 import EctsCalculator from './pages/Ects';
 import Lessons from './pages/Lessons';
@@ -8,9 +9,8 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
-  Link,
   Outlet,
-  RouterProvider
+  RouterProvider,
 } from 'react-router-dom' 
 
 
@@ -32,7 +32,7 @@ function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Root/>}>
-
+        <Route path="/home" index element={<Home/>}/>
         <Route path="/courses" element={<Lessons/>}/>
         <Route path="/ects" element={<EctsCalculator/>}/>
 
@@ -40,6 +40,14 @@ function App() {
     )
   )
 
+  switch(window.location.pathname) {
+    case '/home':
+      break;
+    case '/ects':
+      break;
+    case '/courses':
+      break;
+  }
 
   useEffect(() => { 
     backendData = lessons;

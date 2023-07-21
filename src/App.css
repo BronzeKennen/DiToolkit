@@ -3,7 +3,9 @@
 }
 
 body {
-  margin: 0;
+  margin:0 auto;
+  padding-left:7%;
+  padding-right:7%;
 }
 
 .users {
@@ -41,13 +43,19 @@ body {
 }
 
 
-#dropButton {
+.dropButton {
   border:1px cyan solid;
   padding:10px;
   color:yellow;
   width:70px;
   height:70px;
   padding:10px;
+}
+
+.dropbutton:hover {
+  border:2px yellow solid;
+  color:pink;
+  height:300px;
 }
 
 #buttonDiv {

@@ -1,6 +1,7 @@
 import { backendData } from "../App"
 import React, { useState } from 'react'
 import { useAutoAnimate } from '@formkit/auto-animate/react'
+import { motion } from 'framer-motion'
 
 export default function Lessons() {
     const [dropdownStates, setDropdownStates] = useState({});
@@ -8,14 +9,14 @@ export default function Lessons() {
     if(typeof backendData === 'undefined') {
         return (<p>Loading...</p>)
     } else {
-        const semesters = [...new Set(backendData.map((l:any) => l.semester))];
+        const semesters = [...new Set(backendData.map((l:any) => l.semester))].sort();
         
         const toggleDropdown = (semester:any) => {
             setDropdownStates((prevState:any) => ({
               ...prevState,
               [semester]: !prevState[semester],
             }));
-          };
+          };        
 
         return (
             <div>
@@ -25,7 +26,14 @@ export default function Lessons() {
                 );
                 return(
                     <div key={semester} id="buttonDiv" ref={animations}>
-                        <button id="dropButton" type="button" onClick={() => toggleDropdown(semester)}>{semester}</button>
+                        <motion.button  className="dropButton"
+                        type="button"
+                        whileHover={{
+                            scale: 1.1,
+                            textShadow: "0px 0px 8px rgb(255,255,255)",
+                            boxShadow: "0px 0px 8px orange"
+                            }}
+                        onClick={() => toggleDropdown(semester)}>{semester}</motion.button>
                     {dropdownStates[semester as keyof unknown] && (
                         <div className="dropdownSemester">
                             {semesterLessons.map((lesson:any) => (
