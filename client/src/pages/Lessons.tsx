@@ -1,6 +1,7 @@
 import { backendData } from "../App"
 import React, { useState } from 'react'
 import { useAutoAnimate } from '@formkit/auto-animate/react'
+import NavBar from "../Navbar"
 
 export default function Lessons() {
     const [dropdownStates, setDropdownStates] = useState({});
@@ -19,17 +20,18 @@ export default function Lessons() {
 
         return (
             <div>
+                <NavBar/>
               {semesters.map((semester:any) => {
                 const semesterLessons = backendData.filter(
                     (lesson:any) => lesson.semester === semester
                 );
                 return(
-                   <div key={semester} id="buttonDiv" ref={animations}>
+                    <div key={semester} id="buttonDiv" ref={animations}>
                         <button id="dropButton" type="button" onClick={() => toggleDropdown(semester)}>{semester}</button>
                     {dropdownStates[semester] && (
                         <div className="dropdownSemester">
                             {semesterLessons.map((lesson:any) => (
-                                <div>
+                                <div key={lesson.lesson_name}>
                                 <p className="courses" key={lesson.lesson_name}>{lesson.lesson_name}<span id="cid">{lesson.cid}</span></p>
                                 
                                 </div>

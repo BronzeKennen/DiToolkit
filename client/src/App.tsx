@@ -3,24 +3,28 @@ import EctsCalculator from './pages/Ects';
 import Lessons from './pages/Lessons';
 import './App.css'
 import { useEffect, useState } from 'react'
-
+import { createClient } from '@supabase/supabase-js'
 
 export var backendData:any, setBackendData:any;
 
-function App() {
+export const supabase = createClient(
+  import.meta.env.VITE_SUPABASE_URL,
+  
+  import.meta.env.VITE_SUPABASE_PASSWORD
+);
 
+
+const { data: lessons, error } = await supabase
+  .from('lessons')
+  .select('*')
+
+  
+function App() {
   [backendData, setBackendData] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/lessons").then(
-      response => response.json()
-    ).then(
-      data => {
-        setBackendData(data)
-      }
-    )
-  }, []);
-  console.log(backendData);
+    setBackendData(lessons);
+  })
   switch(window.location.pathname) {
     case "/":
         break;

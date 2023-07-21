@@ -1,4 +1,4 @@
-function NavBar() {
+export default function NavBar() {
     return(
         <div className="container">
             <nav className="nav">
@@ -13,4 +13,3 @@ function NavBar() {
 }
 
 
-export default NavBar;
