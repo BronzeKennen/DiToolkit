@@ -17,6 +17,9 @@ export default function NavBar() {
                     <li className={(url === "/courses" ? "active" : "")}><Link  to="/courses">Μαθηματα</Link> </li>
                     <li className={(url === "/ects" ? "active" : "")}> <Link  to="/ects">ECTS Calculator</Link> </li>
                 </ul>
+                <ul className='login-section'>
+                    <li className={(url === "/login" ? "active" : "")}><Link  to="/login">Login</Link></li>
+                </ul>
             </nav>
         </div>
     )

@@ -4,11 +4,6 @@ import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom' 
 
-// const { data: lessons, error } = await supabase
-//     .from('lessons')
-//     .select('*')
-
-
 
 export default function Courses() {
     const [dropdownStates, setDropdownStates] = useState({});

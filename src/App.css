@@ -2,11 +2,13 @@
   box-sizing: border-box;
 }
 
-body {
-  margin:0 auto;
-  padding-left:7%;
-  padding-right:7%;
+@media screen and (min-width:1200px) {
+    body {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
 }
+
 
 .users {
   margin:50px;
@@ -19,11 +21,11 @@ body {
   margin-top:10px;
   padding:10px;
   margin-left: 15px;
-  background-color: rgba(179, 182, 137, 0.178);
+  background-color: #213547;
   color:black;
   border-radius: 10px;
   font-size: 20px;
-  border:2px yellow solid;
+  border:2px cyan solid;
   width: 700px;
 }
 
@@ -34,10 +36,16 @@ body {
   color: black;
 }
 
+.login-section {
+    color:orange;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
 .courses {
-  color:black;
+  color:rgb(37, 202, 22);
   width:98%;
-  background-color: rgba(110, 179, 0, 0.74);
+  background-color: rgba(179, 182, 137, 0.178);
   padding:10px;
   margin:3px;
   border-radius: 3px;
@@ -65,33 +73,56 @@ body {
 }
 
 #buttonDiv {
-  padding:10px;
+      padding:10px;
+}
+
+
+.login {
+    padding:15px;
+    background-image: linear-gradient(black, rgb(29, 3, 59));
+    position:absolute;
+    margin-left:22.5%;
+    align-items: center;
+    border-radius: 1em;
+    max-width: 50%;
+    min-width: 250px;
+    margin-top:20px;
+    display:flex;
+    width:30%;
+    flex-direction: column;
 }
 
 .container {
-  display:flex;
-  width:100%;
-  flex-direction: column;
-  align-items: flex-start;
+    display:flex;
+    width:100%;
 }
 
 .nav {
-  width:100%;
-  background-color: #333;
-  color:white;
-  display:flex;
-  justify-content: space-between;
-  align-items: stretch;
-  gap: 2rem;
-  padding: 0 1rem;
+    width:100%;
+    background-color: #333;
+    color:white;
+    display:flex;
+    align-items: flex-start;
+    gap: 2rem;
+    padding: 0 1rem;
+}
+
+
+.credsBox {
+    padding:15px;
+    width:75%;
+    height:40px;
+    border-radius: 5px;
+    border:1px cyan solid;
 }
 
 .nav ul {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  display: flex;
-  gap: 1rem;
+    width:100%;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    gap: 1rem;
 }
 
 .nav a:hover {
@@ -99,12 +130,12 @@ body {
 }
 
 .nav a {
-  color:inherit;
-  text-decoration: none;
-  height:100%;
-  display:flex;
-  align-items:center;
-  padding: .25rem;
+    color:inherit;
+    text-decoration: none;
+    height:100%;
+    display:flex;
+    align-items:center;
+    padding: .25rem;
 }
 
 .DiToolkit {
@@ -113,9 +144,9 @@ body {
 
 
 .nav li.active {
-  background-color: #555;
+    background-color: #555;
 }
 
 .nav li:hover {
-  background-color: #777;
+    background-color: #777;
 }

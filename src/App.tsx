@@ -3,6 +3,7 @@ import NavBar from './Navbar';
 import EctsCalculator from './pages/Ects';
 import Courses from './pages/Lessons';
 import Course from './pages/Course';
+import Login from './pages/Login'
 import './App.css'
 import { useEffect } from 'react'
 import { createClient } from '@supabase/supabase-js'
@@ -50,6 +51,7 @@ function App() {
             })}
             <Route path="/courses" element={<Courses/>}/>
             <Route path="/ects" element={<EctsCalculator/>}/>
+            <Route path="/login" element={<Login/>}/>
         </Route>
         )
     )
