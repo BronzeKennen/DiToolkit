@@ -1,9 +1,10 @@
 import Home from './pages/Home';
 import NavBar from './Navbar';
 import EctsCalculator from './pages/Ects';
-import Lessons from './pages/Lessons';
+import Courses from './pages/Lessons';
+import Course from './pages/Course';
 import './App.css'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { createClient } from '@supabase/supabase-js'
 import { 
   createBrowserRouter,
@@ -22,23 +23,38 @@ export const supabase = createClient(
   import.meta.env.VITE_SUPABASE_PASSWORD
 );
 
-const { data: lessons, error } = await supabase
-      .from('lessons')
-      .select('*')
+export const { data: lessons, error } = await supabase
+    .from('lessons')
+    .select('*')
 
-  
+
 function App() {
-
-  const router = createBrowserRouter(
-    createRoutesFromElements(
-      <Route path="/" element={<Root/>}>
-        <Route path="/home" index element={<Home/>}/>
-        <Route path="/courses" element={<Lessons/>}/>
-        <Route path="/ects" element={<EctsCalculator/>}/>
-
-      </Route>
+    const headers:Array<string> = [];
+    if(lessons) {
+        for(let i = 0; i < lessons?.length; i++) {
+            headers.push(lessons[i].cid);
+        }
+    }
+    console.log(headers);
+    const router = createBrowserRouter(
+        createRoutesFromElements(
+        <Route path="/" element={<Root/>}>
+            <Route path="/home" index element={<Home/>}/>
+            {headers.map((header, index) => {
+                let lesson;
+                if(lessons) lesson = lessons[index]
+                if(lesson)
+                return (<Route 
+                    key={header}
+                    path={`courses/${header}/`} 
+                    element={<Course lesson_name={lesson.lesson_name} cid={lesson.cid}
+                    description={lesson.description} />}/>)            
+            })}
+            <Route path="/courses" element={<Courses/>}/>
+            <Route path="/ects" element={<EctsCalculator/>}/>
+        </Route>
+        )
     )
-  )
 
   switch(window.location.pathname) {
     case '/home':

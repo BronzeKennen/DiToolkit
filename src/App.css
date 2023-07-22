@@ -34,6 +34,7 @@ body {
 }
 
 .courses {
+  color:black;
   width:98%;
   background-color: rgba(185, 172, 60, 0.664);
   padding:10px;

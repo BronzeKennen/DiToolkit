@@ -2,8 +2,9 @@ import { backendData } from "../App"
 import React, { useState } from 'react'
 import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom' 
 
-export default function Lessons() {
+export default function Courses() {
     const [dropdownStates, setDropdownStates] = useState({});
     const [animations] = useAutoAnimate<HTMLDivElement>();
     if(typeof backendData === 'undefined') {
@@ -38,7 +39,7 @@ export default function Lessons() {
                         <div className="dropdownSemester">
                             {semesterLessons.map((lesson:any) => (
                                 <div key={lesson.lesson_name}>
-                                <p className="courses" key={lesson.lesson_name}>{lesson.lesson_name}<span id="cid">{lesson.cid}</span></p>
+                                <Link className="courses" key={lesson.lesson_name} to={lesson.cid}>{lesson.lesson_name}<span id="cid">{lesson.cid}</span></Link>
                                 
                                 </div>
                             ))}
