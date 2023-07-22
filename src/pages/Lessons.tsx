@@ -1,16 +1,22 @@
-import { backendData } from "../App"
+import { lessons } from "../App"
 import React, { useState } from 'react'
 import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom' 
 
+// const { data: lessons, error } = await supabase
+//     .from('lessons')
+//     .select('*')
+
+
+
 export default function Courses() {
     const [dropdownStates, setDropdownStates] = useState({});
     const [animations] = useAutoAnimate<HTMLDivElement>();
-    if(typeof backendData === 'undefined') {
+    if(!lessons){
         return (<p>Loading...</p>)
     } else {
-        const semesters = [...new Set(backendData.map((l:any) => l.semester))].sort();
+        const semesters = [...new Set(lessons.map((l:any) => l.semester))].sort();
         
         const toggleDropdown = (semester:any) => {
             setDropdownStates((prevState:any) => ({
@@ -22,7 +28,8 @@ export default function Courses() {
         return (
             <div>
               {semesters.map((semester:any) => {
-                const semesterLessons = backendData.filter(
+                if(!lessons) return;
+                const semesterLessons = lessons.filter(
                     (lesson:any) => lesson.semester === semester
                 );
                 return(
@@ -31,10 +38,9 @@ export default function Courses() {
                         type="button"
                         whileHover={{
                             scale: 1.1,
-                            textShadow: "0px 0px 8px rgb(255,255,255)",
-                            boxShadow: "0px 0px 8px orange"
+                            boxShadow: "0px 0px 10px green"
                             }}
-                        onClick={() => toggleDropdown(semester)}>{semester}</motion.button>
+                        onClick={() => toggleDropdown(semester)}><span id="semesterNum">{semester}</span><p id="courseCount">Μαθήματα: {semesterLessons.length}</p></motion.button>
                     {dropdownStates[semester as keyof unknown] && (
                         <div className="dropdownSemester">
                             {semesterLessons.map((lesson:any) => (

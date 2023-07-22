@@ -15,8 +15,6 @@ import {
 } from 'react-router-dom' 
 
 
-export let backendData:any|null;
-
 export const supabase = createClient(
   import.meta.env.VITE_SUPABASE_URL,
   
@@ -65,9 +63,6 @@ function App() {
       break;
   }
 
-  useEffect(() => { 
-    backendData = lessons;
-  })
   return (
     <div>
     <RouterProvider router={router}/>
