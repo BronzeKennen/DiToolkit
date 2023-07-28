@@ -187,6 +187,17 @@
     opacity: 50%;
 }
 
+.themata-buttons button {
+    padding:1.6rem;
+    margin:.3em;
+    width: 30%;
+    background-color: rgba(0, 0, 0, 0.63);
+    color:rgb(236, 200, 156);
+}
+
+.themata-buttons button:hover {
+    border:1px beige solid;
+}
 .nav {
     width:100%;
     background-color: #333;
