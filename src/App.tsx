@@ -5,14 +5,13 @@ import Courses from './pages/Lessons';
 import Course from './pages/Course';
 import Login from './pages/Login'
 import './App.css'
-import { useEffect } from 'react'
 import { createClient } from '@supabase/supabase-js'
 import { 
-  createBrowserRouter,
-  createRoutesFromElements,
-  Route,
-  Outlet,
-  RouterProvider,
+    createBrowserRouter,
+    createRoutesFromElements,
+    Route,
+    Outlet,
+    RouterProvider
 } from 'react-router-dom' 
 
 
@@ -34,7 +33,6 @@ function App() {
             headers.push(lessons[i].cid);
         }
     }
-    console.log(headers);
     const router = createBrowserRouter(
         createRoutesFromElements(
         <Route path="/" element={<Root/>}>
@@ -55,15 +53,6 @@ function App() {
         </Route>
         )
     )
-
-  switch(window.location.pathname) {
-    case '/home':
-      break;
-    case '/ects':
-      break;
-    case '/courses':
-      break;
-  }
 
   return (
     <div>

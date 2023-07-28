@@ -9,7 +9,7 @@ export default function NavBar() {
         setUrl(location.pathname);
     }, [location]);
     return(
-        <div className="container">
+        <div>
             <nav className="nav">
                 <Link className="active" to="/home">DiToolkit</Link>
                 <ul>

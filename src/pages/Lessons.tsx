@@ -21,7 +21,7 @@ export default function Courses() {
           };        
 
         return (
-            <div>
+            <div className="container">
               {semesters.map((semester:any) => {
                 if(!lessons) return;
                 const semesterLessons = lessons.filter(

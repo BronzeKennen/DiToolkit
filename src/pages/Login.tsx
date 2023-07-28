@@ -1,17 +1,42 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion'
 
 export default function Login() {
+
+    const [formData, setFormData] = useState({
+        username: '',
+        password: '',
+    });
+
+    const handleChange = () => {
+        setFormData((prevFormData:any) => ({
+            ...prevFormData,
+            [event.target.name]:event.target.value
+        }))
+    }
+
+    const handleSubmit = () => {
+        return null;
+    }
+
     return (
     <div className="loginBox">
-        <form className="login">
+        <form className="login"
+            onSubmit={handleSubmit}>
             <label>e-class username</label>
             <input className="credsBox"
                 type="text"
+                placeholder='sdi...'
+                name='username'
+                onChange={handleChange}
                 />
             <label>e-class password</label>
             <input className="credsBox"
                 type="password"
-            /><br></br>
+                placeholder='Password'
+                name='password'
+                onChange={handleChange}
+                /><br></br>
             <motion.button 
             type='button'
             className="loginButton"

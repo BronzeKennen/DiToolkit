@@ -12,8 +12,8 @@ export default function Course( course:any ) {
     }
 
     return (
-    <div>
-        <h1>{course.lesson_name} | {course.cid}</h1>
+    <div className="container">
+        <h2>{course.lesson_name} | {course.cid}</h2>
         <div className="course-container">
             <nav className="course-nav">
                 <ul>
@@ -40,17 +40,34 @@ export default function Course( course:any ) {
 
 
 function about( course:any ) {
+    const objects = ['1','2','3','4']; //example, will be replaced with the actual announcements fetched
     return(
-        <div className="cringe">
-            <p>{course.description}</p>
-            <p>{course.description}</p>
-            <p>{course.description}</p>
-            <p>{course.description}</p>
-            <p>{course.description}</p>
-            <p>{course.description}</p>
-            <p>{course.description}</p>
-            <p>{course.description}</p>
-            <p>{course.description}</p>
+        <div className="about">
+            <div className="desc">
+                {/* <p>{course.description}</p> */}
+                <h3>Course Description:</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa ad aut autem commodi dolore, quisquam deleniti blanditiis sapiente voluptatem a doloremque incidunt officiis molestias, beatae consequatur explicabo recusandae! Facilis, quisquam.</p>
+            </div>
+            <div className="announcements">
+                <table className="announcementsTable">
+                        {objects.map((item, index) => {
+                            const updatedInterval = 0.15 + index * 0.40;
+                            return(
+                                <tr key={index}>
+                                    <motion.td
+                                        initial={{ opacity: 0, y: 0 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        exit={{ opacity: 0, y: 0 }}
+                                        transition={{ duration: updatedInterval }}
+                                    >
+                                        Announcement Title
+                                        <br></br><span>28/7 - 16:10</span>
+                                    </motion.td>
+                                </tr>
+                            )
+                        })}
+                </table>
+            </div>
         </div>
         )
     }
