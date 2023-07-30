@@ -163,6 +163,19 @@
     width:100%;
 }
 
+.themata-buttons {
+    width:100%;
+}
+
+.thema-page {
+    width:100%;
+}
+
+.themata-announcements {
+    display:flex;
+    flex-direction: row;
+}
+
 .announcements {
     width:100%;
 }
@@ -187,10 +200,14 @@
     opacity: 50%;
 }
 
+.themata-buttons{
+    border:1px red solid;
+}
+
 .themata-buttons button {
     padding:1.6rem;
     margin:.3em;
-    width: 30%;
+    width: 50%;
     background-color: rgba(0, 0, 0, 0.63);
     color:rgb(236, 200, 156);
 }
@@ -262,4 +279,5 @@
 
 .nav li:hover {
     background-color: #777;
+    border-radius: 50px;
 }
